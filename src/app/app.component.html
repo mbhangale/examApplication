@@ -1,0 +1,53 @@
+<div style="background-color: mediumturquoise">
+  <table cellpadding="10px">
+    <tr>
+      <td><a routerLink="home">Home</a></td>
+      <td><a routerLink="contact">Contact</a></td>
+      <td><a routerLink="about">About</a></td>
+      <td><a routerLink="login" target="_self">Login</a></td>
+    </tr>
+  </table>
+</div>
+<p>{{"hello world" | uppercase}}</p>
+<p>{{"HELLO WORLD" | lowercase}}</p>
+<p>{{5336.665757 | number:'2.2-4'}}</p>
+<p>{{78 | currency:'USD'}}</p>
+<p>{{myjson | json}}</p>
+<p>{{mydate | date:'h:m:s a'}}</p>
+
+<form #userlogin = "ngForm" (ngSubmit) ="onFormSubmit(userlogin)">
+  <input type="text" name="firstname" id="fname" placeholder="First Name">
+  <p *ngIf="fnameFlag;">FirstName cant be null</p>
+  <input type="text" name="lastname" id="lname" placeholder="Last Name"><br>
+  <input type="email" name="email" id="email" placeholder="Email"><br>
+  <input type="submit" value="submit">
+</form>
+
+
+<!-- REACTIVE FORMS-->
+<form (ngSubmit) ="myOnSubmit()">
+  <input type="text" [formControl]="username" name="username" ><br>
+  <input type="password" [formControl]="password" name ="password"><br>
+  <input type="submit">
+</form>
+
+<mat-form-field appearance="fill">
+  <mat-label>Choose a date</mat-label>
+<!-- #docregion toggle -->
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+<!-- #enddocregion toggle -->
+</mat-form-field>
+
+
+<hr>
+<hr>
+  <h3>
+    Users from Jsonplacholder
+  </h3>
+    <ul>
+      <li *ngFor = "let user of userdata">{{user.name}}</li>
+    </ul>
+
+<router-outlet></router-outlet>
